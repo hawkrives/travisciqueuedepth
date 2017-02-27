@@ -1,15 +1,19 @@
 <!doctype html>
+<meta name="viewport" content="width=device-width">
 
 <style>
-  output, time {
-    display: block;
+  html {
+    margin: 0 auto;
+    max-width: 40em;
   }
 </style>
 
 <h1 id="queue-name">$name</h1>
 
-<output id="queue-depth">$depth</output>
-<time id="queue-lastupdatetime">$last-updated</time>
+<p>
+  The queue is <output id="queue-depth">$depth</output> builds deep, 
+  as of <time id="queue-lastupdatetime">$last-updated</time>.
+</p>
 
 <script async>
   async function getQueueDepth() {
