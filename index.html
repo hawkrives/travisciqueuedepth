@@ -1,12 +1,17 @@
 <!doctype html>
 
+<style>
+  output, time {
+    display: block;
+  }
+</style>
+
 <h1 id="queue-name">$name</h1>
+
 <output id="queue-depth">$depth</output>
-<time id="queue-lastupdatetime">$last-updated</output>
+<time id="queue-lastupdatetime">$last-updated</time>
 
 <script async>
-  const $ = document.querySelector.bind(document)
-
   async function getQueueDepth() {
     const data = await fetch('https://www.traviscistatus.com/metrics-display/7cl94r33fvsg/day.json').then(r => r.json())
 
@@ -21,11 +26,11 @@
     document.querySelector('#queue-name').textContent = name
 
     document.querySelector('#queue-lastupdatetime').textContent = time.toUTCString()
-    document.querySelector('#queue-lastupdatetime').datetime = time.toISOString()
+    document.querySelector('#queue-lastupdatetime').dateTime = time.toISOString()
 
     document.querySelector('#queue-depth').textContent = value
   }
-  
+
   function ready(fn) {
     if (document.readyState !== 'loading') {
       fn()
